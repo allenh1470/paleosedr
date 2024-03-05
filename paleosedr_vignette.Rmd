@@ -1,0 +1,39 @@
+# paleosedR Vignette
+
+### Developed by: Hunter Allen
+
+### Date last updated: 3/4/2024
+
+paleosedR is a Rstudio package developed for the NAU's Quaternary Geology and Paleoclimatology laboratory. This package primarily aims to take proxy records developed from lake sediment cores and easily organize data, visualize records, and run a Principal Component Analysis (PCA). With this package, beginner to moderate coding experience is required. Many of the functions in this package work in tandem with the geoChronR (cite) and lipdR (cite) packages developed by Dr. Nick McKay.
+
+In this vignette I will walk you through the basics of getting your data set up and standardized in an Excel (.xlsx) file, transplanting data into the LipD Playground (cite), producing an age-depth model, mapping your data and visualizing it. I have laid the document out into (cite) categories so that you can navigate directly to the needed section.
+
+### Table of Content
+
+1.  Standardized Data
+
+2.  LipD Playground
+
+3.  Age-Depth Modeling and Mapping Data
+
+4.  Multi-Proxy-Plots
+
+5.  Particle Size Analysis and Heatmaps
+
+6.  Principal Component Analysis (PCA)
+
+## 1.   Standardized Data 
+
+First things first! Ensure that a composite depth profile has been developed if the sediment core has multiple sections. This is critical for all of the following steps. Composites are the created by matching stratigraphy at different points in the core to build a complete top to bottom core depth profile, making multiple core appear as one.
+
+Once a composite depth is created and you start getting different datasets, it is essential to have individual Excel files. These files will house your data as you produce proxy records of Biogenic Silica (BSi), Hyperspectral (RABD data), X-ray fluorescence (XRF), Loss-on-Ignition (LOI), and more.
+
+This package is set up for the following proxy records: Sedimentation Rate, Bulk Density (BD), Mass Accumulation Rate (MAR), Grey Scale, RABD datasets, LOI, BSi, Magnetic Susceptibility (MS), XRF, and particle size data.
+
+Great! You now have a huge dataset and multiple proxy records and need to visualize and interpret them. First, download this data sheet (cite). Rename the Excel sheet to yyyy (year) mm (month) dd (day), lake name, proxydataset (yyyy.mm.dd_lakename_proxydataset). This will be where you house all of your records and keep them standardized. You will not be able to use this package without using this organization method.
+
+In this Excel sheet, you have 13 different "sheets" or "tabs" each, has pre-named to the specific dataset it will hold. EX.) BSi data will go in "bsi", bulk density data will go in "bd." Each sheet has the first two columns named "drive_code" and "core_depth." This will often be how you collect your data and you will have to convert it over to the composite depth.
+
+###                                                     
+
+### 
