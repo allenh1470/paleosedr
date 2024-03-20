@@ -1,12 +1,31 @@
 Package: paleosedr
-Title: What the Package Does (One Line, Title Case)
+Title: A package for paleoclimate data analysis and visualization
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("Hunter", "Allen", , "hta42@nau.edu", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-5719-4470"))
+Description: This package provides tools for paleoclimate data analysis. Its primary function is to assist in data visualization for the NAU Quaternary Geology and Paleoclimatology Lab.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+Imports:
+    readxl,
+    gridExtra,
+    rbacon,
+    pcaMethods,
+    magrittr,
+    dplyr,
+    purrr,
+    ggplot2,
+    readr,
+    tidyverse,
+    geoChronR,
+    tinyPSA,
+    lipdR
+Suggests: 
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Config/testthat/edition: 3

@@ -1,0 +1,43 @@
+---
+title: "stamdardized_data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{stamdardized_data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+knitr::opts_chunk
+knitr::opts_chunk
+```
+
+```{r setup}
+library(paleosedr)
+library(readxl)
+library(purrr)
+library(lipdR)
+library(geoChronR)
+```
+
+Table of Content
+  1. **Standardized Data**
+  2. 
+
+
+
+# 1. Standardized Data
+
+First things first! Ensure that a composite depth profile has been developed if the sediment core has multiple sections. This is critical for all of the following steps. Composites are the created by matching stratigraphy at different points in the core to build a complete top to bottom core depth profile, making multiple core appear as one.
+
+Once a composite depth is created and you start getting different datasets, it is essential to have individual Excel files. These files will house your data as you produce proxy records of Biogenic Silica (BSi), Hyperspectral (RABD data), X-ray fluorescence (XRF), Loss-on-Ignition (LOI), and more.
+
+This package is set up for the following proxy records: Sedimentation Rate, Bulk Density (BD), Mass Accumulation Rate (MAR), Grey Scale, RABD datasets, LOI, BSi, Magnetic Susceptibility (MS), XRF, and particle size data.
+
+Great! You now have a huge dataset and multiple proxy records and need to visualize and interpret them. First, download this data sheet (cite). Rename the Excel sheet to yyyy (year) mm (month) dd (day), lake name, proxydataset (yyyy.mm.dd_lakename_proxydataset). This will be where you house all of your records and keep them standardized. You will not be able to use this package without using this organization method.
+
+In this Excel sheet, you have 13 different "sheets" or "tabs" each, has pre-named to the specific dataset it will hold. EX.) BSi data will go in "bsi", bulk density data will go in "bd." Each sheet has the first two columns named "drive_code" and "core_depth." This will often be how you collect your data and you will have to convert it over to the composite depth.
