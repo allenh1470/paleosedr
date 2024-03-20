@@ -19,13 +19,14 @@ Imports:
     purrr,
     ggplot2,
     readr,
-    tidyverse,
-    geoChronR,
-    tinyPSA,
-    lipdR
+    tidyverse
 Suggests: 
     knitr,
     rmarkdown,
     testthat (>= 3.0.0)
+Remotes:
+    geoChronR,
+    tinyPSA,
+    lipdR
 VignetteBuilder: knitr
 Config/testthat/edition: 3
