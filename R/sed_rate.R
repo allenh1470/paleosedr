@@ -27,7 +27,7 @@ get_sed_rate_sheet <- function(all_data, x_breaks = NULL, x_labels = NULL) {
       labels = x_labels
     ) +
     theme_classic() +
-    labs(x = "Age (Cal ka bp)", y = "Sed. Rate (cm/yr)")
+    labs(x = "Age (Cal bp)", y = "Sed. Rate (cm/yr)")
 
   print(sed_rate_plot)
 

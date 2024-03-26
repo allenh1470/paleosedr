@@ -1,0 +1,103 @@
+---
+title: "age_modeling"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{age_modeling}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+knitr::opts_chunk
+knitr::opts_chunk
+```
+
+```{r setup}
+library(paleosedr)
+library(readxl)
+library(purrr)
+library(lipdR)
+library(geoChronR)
+```
+
+Table of Contents
+
+1\. Standardized Data
+
+2\. LIPD Playground
+
+3\. **Age Modeling**
+
+4\. Plotting Sed. Rate and MAR
+
+5\. Plotting Multi-Proxy Records
+
+6\. Particle Size Heatmap
+
+# 3. Age Modeling
+
+Before creating your age model, you will need to have your LipD
+Playground file all set and ready to go, with both paleo and chron data
+in it.
+
+Once again, we are going to reference the Eklutna dataset. If your
+variables and filepath to the LipD file we made are named differently or
+saved somewhere else, change them for your own dataset.
+
+```{r}
+Eklutna <- lipdR::readLipd("C:/Users/allen/OneDrive/Documents/Rstudio/Rstudio/paleosedr/extdata/eklutna.allen.2024.lpd")
+```
+
+The following code will rely on the function runBacon and the geoChronR
+package. For tuning your specific age model, I recommend going to this
+website. It will help you tune the priors and make your age model fit
+the dataset
+(<https://nickmckay.github.io/GeoChronR/articles/Introduction.html>). At
+Eklutna, we needed to change the sedimentation rate at different core
+parts using slump, boundary, and bacon.acc.mean. Every lake and every
+record is unique, so you can set it up however you like.
+
+```{r}
+eklutna_age <- runBacon(Eklutna,
+              lab.id.var = 'labID',
+              age.14c.var = 'age', 
+              age.14c.uncertainty.var = 'age_uncertainty',
+              age.var = 'cal_age', 
+              age.uncertainty.var = 'minus_error', 
+              depth.var = 'depth', 
+              reservoir.age.14c.var = NULL, 
+              reservoir.age.14c.uncertainty.var = NULL, 
+              rejected.ages.var = NULL,
+              ask = FALSE,
+              bacon.dir = "~/Cores",
+              suggest = FALSE,
+              close.connection = FALSE,
+              d.max = 1115,
+              slump = c(18,19, 26.5,27, 30,31, 44.5,45, 144,145, 336,337, 438,439, 747,748),
+              postbomb = 1,
+              boundary = c(710, 1040),
+              bacon.acc.mean = c(7.83,10,20),
+              accept.suggestions = TRUE,)
+```
+
+Great! You now have a Bayesian age model for Eklutna! Now, lets
+visualize the data using the plot_age_model function.
+
+```{r}
+eklutna_age_model <- plot_age_model(eklutna_age)
+```
+
+You should now have an age model plot called eklutna_age_model. This
+plot is similar to a ggplot and can be manipulated with those commands
+until you get a plot you like. Similar to the depth plots in thelast
+section, you can adjust the code and axis labels to match your desired
+length.
+
+![](images/age_model.png)

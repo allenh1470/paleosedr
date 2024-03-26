@@ -27,7 +27,7 @@ get_mar_sheet <- function(all_data, x_breaks = NULL, x_labels = NULL) {
       labels = x_labels
     ) +
     theme_classic() +
-    labs(x = "Age (Cal ka bp)", y = "MAR (g/cm^2/yr)")
+    labs(x = "Age (Cal bp)", y = "MAR (g/cm^2/yr)")
 
   print(mar_plot)
 

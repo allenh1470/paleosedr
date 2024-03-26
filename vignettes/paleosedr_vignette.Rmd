@@ -1,0 +1,21 @@
+# paleosedR Vignette
+
+### Developed by: Hunter Allen
+
+### Date last updated: 3/25/2024
+
+paleosedR is a Rstudio package developed for the NAU's Quaternary Geology and Paleoclimatology laboratory. This package primarily aims to take proxy records developed from lake sediment cores and easily organize data, visualize records, and run a Principal Component Analysis (PCA). With this package, beginner to moderate coding experience is required. Many of the functions in this package work in tandem with the geoChronR (https://nickmckay.github.io/GeoChronR/) and lipdR (https://lipd.net) packages developed by Dr. Nick McKay.
+
+In this vignette I will walk you through the basics of getting your data set up and standardized in an Excel (.xlsx) file, transplanting data into the LipD Playground (https://lipd.net/playground), producing an age-depth model, mapping your data and visualizing it. I have laid the document out into a few categories so that you can navigate directly to the needed section.
+
+### Table of Content
+
+  1. **Standardized Data**
+  2. **LIPD Playground**
+  2. **Age Modeling**
+  3. **Plotting Sed. Rate and MAR**
+  4. **Plotting Multi-Proxy Records**
+  5. **Particle Size Heatmap**
+
+CLEAN VERSION OF PALEO-RECORD EXCEL CHART THAT THIS PACKAGE USES:
+https://docs.google.com/spreadsheets/d/1IUNLVnXgNeDRKuJ9ysiAO2V2DdnlzheV/edit?usp=drive_link&ouid=105286369374985387783&rtpof=true&sd=true

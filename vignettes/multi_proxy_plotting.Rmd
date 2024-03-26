@@ -1,0 +1,116 @@
+---
+title: "multi-proxy"
+author: "Hunter"
+date: "2024-03-25"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r setup}
+library(paleosedr)
+library(readxl)
+library(purrr)
+library(lipdR)
+library(geoChronR)
+```
+
+Table of Contents
+
+1.  Standardized Data
+
+2.  LIPD Playground
+
+3.  Age Modeling
+
+4.  Plotting Sed. Rate and MAR
+
+5.  **Plotting Multi-Proxy Records**
+
+6.  Particle Size Heatmap
+
+# 5. Plotting Multi-Proxy Records
+
+Now that we have an age model and proxy records, we will plot some of the records from our paleo data tables in our Lakes lipD file.
+
+First, recall the LipD file and run your age model (visit section 3. Age Modeling). Then, we must map our Bayesian age model onto our paleo data from the lips file. Again, I would recommend visiting this site for more information (<https://nickmckay.github.io/GeoChronR/articles/Introduction.html>).
+
+Above is the code for mapping each paleotable from the Eklutna dataset. If you are referencing a different dataset or paleo table from your lips file, you will need to adjust the paleo.meas.table.num = \# section of the code. I recommend having the browser open with your LipD Playground page so you can correctly name each paleotable.
+
+```{r}
+map_rabd <-mapAgeEnsembleToPaleoData(eklutna_age,age.var = "ageEnsemble",paleo.meas.table.num = 1)
+map_loi <-mapAgeEnsembleToPaleoData(eklutna_age,age.var = "ageEnsemble",paleo.meas.table.num = 2)
+map_bd <-mapAgeEnsembleToPaleoData(eklutna_age,age.var = "ageEnsemble",paleo.meas.table.num = 3)
+map_ms <-mapAgeEnsembleToPaleoData(eklutna_age,age.var = "ageEnsemble",paleo.meas.table.num = 4)
+map_bsi <-mapAgeEnsembleToPaleoData(eklutna_age,age.var = "ageEnsemble",paleo.meas.table.num = 5)
+map_grain <- mapAgeEnsembleToPaleoData(eklutna_age,age.var = "ageEnsemble",paleo.meas.table.num = 6)
+map_clay <- mapAgeEnsembleToPaleoData(eklutna_age,age.var = "ageEnsemble",paleo.meas.table.num = 7)
+map_xrf <- mapAgeEnsembleToPaleoData(eklutna_age,age.var = "ageEnsemble",paleo.meas.table.num = 8)
+map_sed_rate <- mapAgeEnsembleToPaleoData(eklutna_age,age.var = "ageEnsemble",paleo.meas.table.num = 9)
+map_mar <-mapAgeEnsembleToPaleoData(eklutna_age,age.var = "ageEnsemble",paleo.meas.table.num = 10) 
+map_xrf_clr <-mapAgeEnsembleToPaleoData(eklutna_age,age.var = "ageEnsemble",paleo.meas.table.num = 11) 
+```
+
+Here are the basic proxy functions I've made below. All you have to do is call your data and plot away!
+
+```{r}
+rabd_plot <- plot_rabd_ens(map_rabd)
+```
+
+```{r}
+bd_plot <- plot_bd_ens(map_bd)
+```
+
+```{r}
+loi_plot <- plot_loi_ens(map_loi)
+```
+
+```{r}
+bsi_plot <- plot_bsi_ens(map_bsi)
+```
+
+```{r}
+ms_plot <- plot_ms_ens(map_ms)
+```
+
+Depending on what grain size you would like to plot, you can add the record to your LipD file. Here's an example of the code I use for D50. You can switch this out for clay, fine silt, coarse sand, etc....
+
+```{r}
+grain <- selectData(map_grain,var.name = "ageEnsemble",meas.table.num = 6)
+grain_size <- selectData(map_grain,var.name = "d50",meas.table.num = 6)
+
+d50.plot <- plotTimeseriesEnsRibbons(X = grain,Y = grain_size, probs = c(0.25,0.5,0.75),color.line = "tan1")+
+  coord_flip()+
+  scale_x_reverse()+
+  theme_classic()+
+  labs(x = "Age (Cal bp)", y = "D50")
+print(d50.plot)
+```
+
+I also chose not to make a specific function for XRF data since the paleotable can be highly variable from core to core. I usually use the following code and change out the referenced element:
+
+```{r}
+xrf <- selectData(map_xrf,var.name = "ageEnsemble",meas.table.num = 8)
+xrf_ti <- selectData(map_xrf,var.name = "ti",meas.table.num = 8)
+
+xrf_ti_plot <- plotTimeseriesEnsRibbons(X = xrf,Y = xrf_ti, probs = c(0.25,0.5,0.75),color.line = "purple4")+
+  coord_flip()+
+  scale_x_reverse()+
+  theme_classic()+
+  labs(x = "Age (Cal bp)", y = "Ti (count)")+
+  scale_x_reverse(
+    breaks = c(9500,9000,8500, 8000,7500, 7000,6500, 6000,5500, 5000,4500, 4000,3500, 3000,2500, 2000,1500, 1000,500, 0),
+    labels = c("", "9","", "8","", "7","", "6","", "5","", "4","", "3","", "2","", "1","", "0")) +
+  theme_classic()
+print(xrf_ti_plot)
+```
+
+Great! Now that you have a bunch of plots let's use the package "gridExtra" to plot them vertically next to each other. You can also fiddle with the code to plot them all horizontally. The "align ="x" command in the code below will try to align all the plots by the x-axis. Be careful, though, because this is not always perfect. You can adjust the x-lim or y-lim in the plotted ensembles to match the time series better.
+
+```{r}
+multi_proxy_plot <- grid.arrange(grobs = list(rabd_plot,loi_plot, bsi_plot, ms_plot, bd_plot, d50.plot, xrf_ti_plot ), ncol = 7, align = "x")
+```
+
+If you want to add or change elements from these plots, I recommend saving the image as a .png file by plugging the "multi_proxy_plot" name into the console below. Your plot should appear on the bottom right side of RStudio. Adjust the margins until you are happy and save the image using the "Export" dropdown.

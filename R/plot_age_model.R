@@ -20,7 +20,7 @@ plot_age_model <- function(age_model, x_breaks = NULL, x_labels = NULL, y_breaks
       scale_y_reverse(breaks = y_breaks, labels = y_labels)
     } else NULL +
     theme(panel.grid = element_blank(), legend.position = "none") +
-    labs(x = "Age (Cal ka BP)", y = "Depth (cm)") +
+    labs(x = "Age (Cal BP)", y = "Depth (cm)") +
     ggtitle(NULL)
 
   return(plot)
