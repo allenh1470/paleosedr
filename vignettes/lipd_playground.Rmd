@@ -35,7 +35,7 @@ Again, you will need some files from Eklutna saved in a directory. Another good 
 
 First, open Lipd Playground using this Link: (<https://lipd.net/playground>).
 
-Here, you will see the main page. You can upload the eklutna.allen.2024 file you just downloaded here.
+Here, you will see the main page. You can upload the eklutna.allen.2024 file you just downloaded here: https://drive.google.com/file/d/1suefK5QUOaCVXpPeKE9Vsvq0OXjjJLpU/view?usp=sharing
 
 ![](images/lipd_1.png)
 
