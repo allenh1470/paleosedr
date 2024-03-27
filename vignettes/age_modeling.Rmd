@@ -19,7 +19,7 @@ knitr::opts_chunk
 knitr::opts_chunk
 ```
 
-```{r setup}
+```{r}
 library(paleosedr)
 library(readxl)
 library(purrr)
@@ -118,6 +118,3 @@ length.
 
 ![](images/age_model.png)
 
-```{r}
-devtools::build_rmd("vignettes/age_modeling.Rmd")
-```

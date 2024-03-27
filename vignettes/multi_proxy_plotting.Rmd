@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r setup}
+```{r}
 library(paleosedr)
 library(readxl)
 library(purrr)
@@ -40,6 +40,29 @@ Now that we have an age model and proxy records, we will plot some of the record
 First, recall the LipD file and run your age model (visit section 3. Age Modeling). Then, we must map our Bayesian age model onto our paleo data from the lips file. Again, I would recommend visiting this site for more information (<https://nickmckay.github.io/GeoChronR/articles/Introduction.html>).
 
 Above is the code for mapping each paleotable from the Eklutna dataset. If you are referencing a different dataset or paleo table from your lips file, you will need to adjust the paleo.meas.table.num = \# section of the code. I recommend having the browser open with your LipD Playground page so you can correctly name each paleotable.
+```{r, cache = TRUE}
+Eklutna <- lipdR::readLipd("C:/Users/allen/OneDrive/Documents/Rstudio/Rstudio/paleosedr/extdata/eklutna.allen.2024.lpd")
+eklutna_age <- runBacon(Eklutna,
+              lab.id.var = 'labID',
+              age.14c.var = 'age', 
+              age.14c.uncertainty.var = 'age_uncertainty',
+              age.var = 'cal_age', 
+              age.uncertainty.var = 'minus_error', 
+              depth.var = 'depth', 
+              reservoir.age.14c.var = NULL, 
+              reservoir.age.14c.uncertainty.var = NULL, 
+              rejected.ages.var = NULL,
+              ask = FALSE,
+              bacon.dir = "~/Cores",
+              suggest = FALSE,
+              close.connection = FALSE,
+              d.max = 1115,
+              slump = c(18,19, 26.5,27, 30,31, 44.5,45, 144,145, 336,337, 438,439, 747,748),
+              postbomb = 1,
+              boundary = c(710, 1040),
+              bacon.acc.mean = c(7.83,10,20),
+              accept.suggestions = TRUE,)
+```
 
 ```{r}
 map_rabd <-mapAgeEnsembleToPaleoData(eklutna_age,age.var = "ageEnsemble",paleo.meas.table.num = 1)
@@ -117,7 +140,3 @@ multi_proxy_plot <- grid.arrange(grobs = list(rabd_plot,loi_plot, bsi_plot, ms_p
 ```
 
 If you want to add or change elements from these plots, I recommend saving the image as a .png file by plugging the "multi_proxy_plot" name into the console below. Your plot should appear on the bottom right side of RStudio. Adjust the margins until you are happy and save the image using the "Export" dropdown.
-
-```{r}
-devtools::build_rmd("vignettes/multi_proxy_plotting.Rmd")
-```

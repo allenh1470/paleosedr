@@ -51,7 +51,5 @@ Similar to the paleodata tables, this chart will have multiple headers. In the i
 
 Great! Now that your paleo and chron tables are filled out, go back to the top of the page and download this file somewhere you can reference later in RStudio. To create the age model and time-seieres plots, head to the next section.
 
-```{r}
-devtools::build_rmd("vignettes/lipd_playground.Rmd")
-```
+
 

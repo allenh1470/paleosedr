@@ -12,7 +12,7 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r setup}
+```{r}
 library(paleosedr)
 library(readxl)
 library(purrr)
@@ -116,7 +116,3 @@ whatever you like.
 
 Your final plots should look very similar since Sed. Rate and MAR often
 correlate with one another.
-
-```{r}
-devtools::build_rmd("vignettes/sed_rate_mar_plots.Rmd")
-```

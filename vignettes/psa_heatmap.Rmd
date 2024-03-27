@@ -12,7 +12,7 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r setup}
+```{r}
 library(paleosedr)
 library(readxl)
 library(purrr)
@@ -115,10 +115,3 @@ accumilation of a specific element from XRF. We can use the plots we
 have already made from Sections 4 and 5 and grid.arrange them next to
 the new particle size heat map.
 
-```{r}
-grid.arrange(grobs = list(eklutna_heatmap_plot, d50.plot, xrf_ti_plot), ncol = 7, align = "x")
-```
-
-```{r}
-devtools::build_rmd("vignettes/psa_heatmap.Rmd")
-```
