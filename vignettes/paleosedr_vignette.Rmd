@@ -19,3 +19,8 @@ In this vignette I will walk you through the basics of getting your data set up 
 
 CLEAN VERSION OF PALEO-RECORD EXCEL CHART THAT THIS PACKAGE USES:
 https://docs.google.com/spreadsheets/d/1IUNLVnXgNeDRKuJ9ysiAO2V2DdnlzheV/edit?usp=drive_link&ouid=105286369374985387783&rtpof=true&sd=true
+
+```{r}
+devtools::build_rmd("vignettes/paleosedr_vignette.Rmd")
+```
+

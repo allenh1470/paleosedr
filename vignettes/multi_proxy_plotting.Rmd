@@ -15,6 +15,8 @@ library(readxl)
 library(purrr)
 library(lipdR)
 library(geoChronR)
+library(ggplot2)
+library(gridExtra)
 ```
 
 Table of Contents
@@ -51,6 +53,7 @@ map_xrf <- mapAgeEnsembleToPaleoData(eklutna_age,age.var = "ageEnsemble",paleo.m
 map_sed_rate <- mapAgeEnsembleToPaleoData(eklutna_age,age.var = "ageEnsemble",paleo.meas.table.num = 9)
 map_mar <-mapAgeEnsembleToPaleoData(eklutna_age,age.var = "ageEnsemble",paleo.meas.table.num = 10) 
 map_xrf_clr <-mapAgeEnsembleToPaleoData(eklutna_age,age.var = "ageEnsemble",paleo.meas.table.num = 11) 
+map_pca1_all <- mapAgeEnsembleToPaleoData(eklutna_age,age.var = "ageEnsemble",paleo.meas.table.num = 12)
 ```
 
 Here are the basic proxy functions I've made below. All you have to do is call your data and plot away!
@@ -114,3 +117,7 @@ multi_proxy_plot <- grid.arrange(grobs = list(rabd_plot,loi_plot, bsi_plot, ms_p
 ```
 
 If you want to add or change elements from these plots, I recommend saving the image as a .png file by plugging the "multi_proxy_plot" name into the console below. Your plot should appear on the bottom right side of RStudio. Adjust the margins until you are happy and save the image using the "Export" dropdown.
+
+```{r}
+devtools::build_rmd("vignettes/multi_proxy_plotting.Rmd")
+```

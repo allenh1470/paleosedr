@@ -1,18 +1,21 @@
-#' Age Model Using Bacon
+#' Plot Age Model
 #'
-#' This function performs age modeling using the Bacon algorithm.
-#' @param data A data frame containing the necessary columns for age modeling.
-#' @return A list containing the age model results.
-#' @importFrom geoChronR runBacon
+#' This function generates a plot using the age model data.
+#' @param eklutna_age The age model data frame.
+#' @return A ggplot object representing the age model plot.
+#' @import ggplot2
 #' @export
-age_model <- function(data) {
-  # Check if necessary columns are present in the data frame
-  if (!all(c("age", "depth") %in% colnames(data))) {
-    stop("Data frame must contain 'age' and 'depth' columns.")
+plot_age_model <- function(eklutna_age) {
+  if (!requireNamespace("ggplot2", quietly = TRUE)) {
+    stop("ggplot2 package is required for this function.")
   }
 
-  # Run Bacon algorithm
-  result <- geoChronR::runBacon(data)
+  age_model <- plotChronEns(eklutna_age) +
+    scale_x_reverse() +
+    scale_y_reverse() +
+    theme(panel.grid = element_blank(), legend.position = "none") +
+    labs(x = "Age (Cal ka BP)", y = "Depth (cm)") +
+    ggtitle(NULL)
 
-  return(result)
+  return(age_model)
 }

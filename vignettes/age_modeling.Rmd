@@ -25,6 +25,7 @@ library(readxl)
 library(purrr)
 library(lipdR)
 library(geoChronR)
+library(ggplot2)
 ```
 
 Table of Contents
@@ -64,7 +65,7 @@ Eklutna, we needed to change the sedimentation rate at different core
 parts using slump, boundary, and bacon.acc.mean. Every lake and every
 record is unique, so you can set it up however you like.
 
-```{r}
+```{r, cache = TRUE}
 eklutna_age <- runBacon(Eklutna,
               lab.id.var = 'labID',
               age.14c.var = 'age', 
@@ -92,12 +93,31 @@ visualize the data using the plot_age_model function.
 
 ```{r}
 eklutna_age_model <- plot_age_model(eklutna_age)
+eklutna_age_model
 ```
+If you want to change the axis labels you can re reference your plot and add elements just like a ggplot. I normal do somehting like this, but make sure to change the breaks on both scales depending on your core depth and age:
+```{r}
+eklutna_age_model <- eklutna_age_model+
+  scale_x_reverse(
+    breaks = c(10000, 9500, 9000, 8500, 8000, 7500, 7000, 6500, 6000, 5500, 5000, 4500, 4000, 3500, 3000, 2500, 2000, 1500, 1000, 500, 0),
+    labels = c("10", "", "9", "", "8", "", "7", "", "6", "", "5", "", "4", "", "3", "", "2", "", "1", "", "0")
+  ) +
+  scale_y_reverse(
+    breaks = c(1150,1100,1050,1000, 950, 900, 850, 800, 750, 700, 650, 600, 550, 500, 450, 400, 350, 300, 250, 200, 150, 100, 50, 0),
+    labels = c("","11","", "10", "", "9", "", "8", "", "7", "", "6", "", "5", "", "4", "", "3", "", "2", "", "1", "", "0")
+  ) 
+eklutna_age_model
+```
+
 
 You should now have an age model plot called eklutna_age_model. This
 plot is similar to a ggplot and can be manipulated with those commands
-until you get a plot you like. Similar to the depth plots in thelast
+until you get a plot you like. Similar to the depth plots in the last
 section, you can adjust the code and axis labels to match your desired
 length.
 
 ![](images/age_model.png)
+
+```{r}
+devtools::build_rmd("vignettes/age_modeling.Rmd")
+```

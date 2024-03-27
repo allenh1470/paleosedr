@@ -9,14 +9,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-```{r setup}
-library(paleosedr)
-library(readxl)
-library(purrr)
-library(lipdR)
-library(geoChronR)
-```
-
 Table of Contents 
 1. Standardized Data 
 2. **LIPD Playground** 
@@ -58,3 +50,8 @@ Next, scroll down to the chronData section. This is where you enter all of your 
 Similar to the paleodata tables, this chart will have multiple headers. In the image below, you will notice that age and age_uncertainty have some dates filled in and some not. **THIS IS IMPORTANT: If you are using radiocarbon ages, they must go in the age and age_uncertainty columns and not the cal_age and the following columns!** This is because your age model will calibrate the radiocarbon ages. What you put here are 14C ages that are un-calibrated. The other ages in the table also cannot go into the age and age_uncertainty section because they are not 14C and do not need to be calibrated.![](images/lipd_5.png)
 
 Great! Now that your paleo and chron tables are filled out, go back to the top of the page and download this file somewhere you can reference later in RStudio. To create the age model and time-seieres plots, head to the next section.
+
+```{r}
+devtools::build_rmd("vignettes/lipd_playground.Rmd")
+```
+

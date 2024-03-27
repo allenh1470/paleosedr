@@ -18,6 +18,8 @@ library(readxl)
 library(purrr)
 library(lipdR)
 library(geoChronR)
+library(gridExtra)
+library(ggplot2)
 ```
 
 Table of Contents 1. Standardized Data 2. LIPD Playground 3. Age
@@ -82,18 +84,20 @@ data ready to be plotted with "psa_heatmap." It will produce a variable
 called "melted_df" that you'll use to make your heatmap plot.
 
 ```{r}
-eklutna_heatmap_plot <- psa_heatmap(melted_df)
+eklutna_heatmap_plot <- psa_heatmap(eklutna_heat_map)
+eklutna_heatmap_plot
 ```
 
-Excellent! You should now have a heatmap of the downcore particle size.
-Like the previous plots, this is a ggplot and can be manipulated with
-different color patterns and x/y limits. I personally like plotting
-grain-size data with a logarithmic scale. If your data is dominated by
-the clay to silt sizes, you can set it up like this:
+Excellent! You should now have a heatmap of the downcore particle size,
+but it looks off. Like the previous plots, this is a ggplot and can be
+manipulated with different color patterns and x/y limits. I personally
+like plotting grain-size data with a logarithmic scale. If your data is
+dominated by the clay to silt sizes, you can set it up like this:
 
 ```{r}
 eklutna_heatmap_plot <-eklutna_heatmap_plot +
                       scale_y_log10(limits = c(1e-01, 1e+02))
+eklutna_heatmap_plot
 ```
 
 You can adjust the y-axis ages like this, but remember to switch out the
@@ -103,6 +107,7 @@ breaks and labels with the ages/depths for your core!
 eklutna_heatmap_plot <-eklutna_heatmap_plot +
                       scale_x_reverse(breaks = c(10000,9500,9000,8500, 8000,7500, 7000,6500, 6000,5500, 5000,4500, 4000,3500, 3000,2500, 2000,1500, 1000,500, 0),
                       labels = c("10", "", "9","", "8","", "7","", "6","", "5","", "4","", "3","", "2","", "1","", "0"))
+eklutna_heatmap_plot
 ```
 
 I usally plot grainsize against the d.50 plot, sed. rate/MAR, or the
@@ -111,5 +116,9 @@ have already made from Sections 4 and 5 and grid.arrange them next to
 the new particle size heat map.
 
 ```{r}
-grid.arrange(grobs = list(eklutna_heatmap_plot, d50.plot, ), ncol = 7, align = "x")
+grid.arrange(grobs = list(eklutna_heatmap_plot, d50.plot, xrf_ti_plot), ncol = 7, align = "x")
+```
+
+```{r}
+devtools::build_rmd("vignettes/psa_heatmap.Rmd")
 ```

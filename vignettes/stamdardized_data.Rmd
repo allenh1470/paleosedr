@@ -25,6 +25,7 @@ library(readxl)
 library(purrr)
 library(lipdR)
 library(geoChronR)
+library(ggplot2)
 ```
 
 Table of Contents 
@@ -100,17 +101,23 @@ depths depending on your dataset. Eklutna's record only goes to 11.15
 meters so I adjust my labels accordingly.
 
 ```{r}
-ms_plot_depth <- ggplot(eklutna_ms, aes(x = depth, y = ms_si)) +
+ms_plot_depth <- ggplot(eklutna_ms, aes(x = composite_cm, y = ms_si)) +
   geom_line(color = "black", size = 0.75) +
-  coord_flip() +
   scale_x_reverse(
     breaks = c(1150,1100,1050,1000, 950, 900, 850, 800, 750, 700, 650, 600, 550, 500, 450, 400, 350, 300, 250, 200, 150, 100, 50, 0),
     labels = c("","11","", "10", "", "9", "", "8", "", "7", "", "6", "", "5", "", "4", "", "3", "", "2", "", "1", "", "0")) +
+  coord_flip() +  
   theme_classic() +
   labs(x = "Depth (cm)", y = "MS (SI)")
-ms_plot_2
+
+print(ms_plot_depth)
 ```
 
 If you have multiple of these depth plots, you can arrange them with the
 grid. arrange function that we will go over in Section 4. **Plotting
 Multi-Proxy Records.**
+
+```{r}
+devtools::build_rmd("vignettes/stamdardized_data.Rmd")
+```
+

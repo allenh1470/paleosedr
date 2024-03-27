@@ -4,14 +4,10 @@
 \alias{get_mar_sheet}
 \title{Get MAR Sheet from Loaded Data and Plot}
 \usage{
-get_mar_sheet(all_data, x_breaks = NULL, x_labels = NULL)
+get_mar_sheet(all_data)
 }
 \arguments{
 \item{all_data}{A list containing data frames from each Excel sheet.}
-
-\item{x_breaks}{Breaks for the x-axis.}
-
-\item{x_labels}{Labels for the x-axis corresponding to the breaks.}
 }
 \value{
 The mar data frame.

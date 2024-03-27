@@ -3,12 +3,10 @@
 #' This function retrieves the Excel sheet called "mar" from the all_data list
 #' and plots the mass accumulation rate.
 #' @param all_data A list containing data frames from each Excel sheet.
-#' @param x_breaks Breaks for the x-axis.
-#' @param x_labels Labels for the x-axis corresponding to the breaks.
 #' @return The mar data frame.
 #' @import ggplot2
 #' @export
-get_mar_sheet <- function(all_data, x_breaks = NULL, x_labels = NULL) {
+get_mar_sheet <- function(all_data) {
   if (!is.list(all_data)) {
     stop("Input must be a list.")
   }
@@ -19,13 +17,10 @@ get_mar_sheet <- function(all_data, x_breaks = NULL, x_labels = NULL) {
 
   mar_data <- all_data[["mar"]]
 
-  mar_plot <- ggplot(mar_data, aes(x = age, y = mar_g_cm_yr)) +
+  mar_plot <- ggplot(mar_data, aes(x = age_cal_bp_yr, y = mar_g_cm_yr)) +
     geom_line(color = "tan4", size = 0.75) +
     coord_flip() +
-    scale_x_reverse(
-      breaks = x_breaks,
-      labels = x_labels
-    ) +
+    scale_x_reverse() +  # No breaks specified
     theme_classic() +
     labs(x = "Age (Cal bp)", y = "MAR (g/cm^2/yr)")
 

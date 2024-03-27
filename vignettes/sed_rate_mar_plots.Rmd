@@ -18,6 +18,8 @@ library(readxl)
 library(purrr)
 library(lipdR)
 library(geoChronR)
+library(ggplot2)
+library(gridExtra)
 ```
 
 Table of Contents
@@ -86,7 +88,7 @@ We need to reload the Excel file since we edited it last time.
 
 ```{r}
 # Replace 'path/to/your/excel_file.xlsx' with the actual file path
-excel_file_path <- "C:/Users/allen/OneDrive/Documents/Rstudio/Rstudio/paleosedr/extdata//yyyy.mm.dd_lakename_proxydata.xlsx"
+excel_file_path <- "C:/Users/allen/OneDrive/Documents/Rstudio/Rstudio/paleosedr/extdata/2024.03.24_eklutna_compilation.xlsx"
 
 # Call the load_paleo_data function to read in the Excel file
 all_data <- load_paleo_data(excel_file_path)
@@ -106,20 +108,15 @@ eklutna_mar_plot <- get_mar_sheet(all_data)
 ```
 
 Both of these plots are ggplots and can be fully edited. If you need to
-adjust the plots axis you can substatute you plot name and depths with
-the following code. Feel free to also change the color of the geom_line
-with whatever you like.
-
-```{r}
-eklutna_sed_rate_plot <- 
-    scale_x_reverse(
-    breaks = c(10000,9500,9000,8500, 8000,7500, 7000,6500, 6000,5500, 5000,4500, 4000,3500, 3000,2500, 2000,1500, 1000,500, 0),
-    labels = c("10","","9","", "8","", "7","", "6","", "5","", "4","", "3","", "2","", "1","", "0")) +
-  theme_classic()+
-  labs(x = "Age (Cal ka bp)", y = "Sed. Rate (cm/yr)")
-```
+adjust the plot axis, you can substitute your plot name and depths with
+the following code. Feel free to change the color of the geom_line to
+whatever you like.
 
 ![](images/sed%20rate%20and%20MAR.png)
 
 Your final plots should look very similar since Sed. Rate and MAR often
 correlate with one another.
+
+```{r}
+devtools::build_rmd("vignettes/sed_rate_mar_plots.Rmd")
+```

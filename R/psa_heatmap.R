@@ -10,7 +10,7 @@ psa_heatmap <- function(melted_df) {
     stop("Input must be a data frame.")
   }
 
-  heat_map <- ggplot(melted_df, aes(x = age.y, y = as.numeric(binned_size), z = abundance)) +
+  heat_map <- ggplot(melted_df, aes(x = age_cal_bp_yr.y, y = as.numeric(binned_size), z = abundance)) +
     geom_contour_filled() +
     labs(title = "Eklutna PSA Distribution",
          x = "Age (cal yr BP)",

@@ -11,8 +11,8 @@ plot_ms_ens <- function(map_ms) {
     stop("geoChronR package is required for this function.")
   }
 
-  ms <- geoChronR::selectData(map_ms, var.name = "ageEnsemble", meas.table.num = 3)
-  ms_ms <- geoChronR::selectData(map_ms, var.name = "ms_si", meas.table.num = 3)
+  ms <- geoChronR::selectData(map_ms, var.name = "ageEnsemble", meas.table.num = 4)
+  ms_ms <- geoChronR::selectData(map_ms, var.name = "MS", meas.table.num = 4)
 
   ms_plot <- geoChronR::plotTimeseriesEnsRibbons(X = ms, Y = ms_ms, probs = c(0.25, 0.5, 0.75), color.line = "red3") +
     coord_flip() +
