@@ -53,7 +53,8 @@ variables and filepath to the LipD file we made are named differently or
 saved somewhere else, change them for your own dataset.
 
 ```{r}
-Eklutna <- lipdR::readLipd("C:/Users/allen/OneDrive/Documents/Rstudio/Rstudio/paleosedr/extdata/eklutna.allen.2024.lpd")
+# Load the data file
+Eklutna <- lipdR::readLipd(system.file("extdata","eklutna.allen.2024.lpd", package = "paleosedr", mustWork = TRUE))
 ```
 
 The following code will rely on the function runBacon and the geoChronR

@@ -63,7 +63,7 @@ Alaska using our first function, "load_paleo_data"
 
 ```{r}
 # Replace 'path/to/your/excel_file.xlsx' with the actual file path
-excel_file_path <- "C:/Users/allen/OneDrive/Documents/Rstudio/Rstudio/paleosedr/extdata/2024.03.24_eklutna_compilation.xlsx"
+excel_file_path <- system.file("extdata", "2024.03.24_eklutna_compilation.xlsx", package = "paleosedr", mustWork = TRUE)
 
 # Call the load_paleo_data function to read in the Excel file
 all_data <- load_paleo_data(excel_file_path)
