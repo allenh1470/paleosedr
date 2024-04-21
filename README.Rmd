@@ -29,27 +29,26 @@ You can install the development version of paleosedr from [GitHub](https://githu
 devtools::install_github("allenh1470/paleosedr")
 ```
 
-## Example
+# paleosedR Vignette
 
-This is a basic example which shows you how to solve a common problem:
+### Developed by: Hunter Allen
 
-```{r example}
-library(paleosedr)
-## basic example code
-```
+### Date last updated: 4/21/2024
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+paleosedr is a Rstudio package developed for the NAU's Quaternary Geology and Paleoclimatology laboratory. This package primarily aims to take proxy records developed from lake sediment cores and easily organize data, visualize records, and run a Principal Component Analysis (PCA). With this package, beginner to moderate coding experience is required. Many of the functions in this package work in tandem with the geoChronR (https://nickmckay.github.io/GeoChronR/) and lipdR (https://lipd.net) packages developed by Dr. Nick McKay.
 
-```{r cars}
-summary(cars)
-```
+In this vignette I will walk you through the basics of getting your data set up and standardized in an Excel (.xlsx) file, transplanting data into the LipD Playground (https://lipd.net/playground), producing an age-depth model, mapping your data and visualizing it. I have laid the document out into a few categories so that you can navigate directly to the needed section.
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this.
+### Table of Content
 
-You can also embed plots, for example:
+  1. **Standardized Data**
+  2. **LIPD Playground**
+  2. **Age Modeling**
+  3. **Plotting Sed. Rate and MAR**
+  4. **Plotting Multi-Proxy Records**
+  5. **Particle Size Heatmap**
 
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
+CLEAN VERSION OF PALEO-RECORD EXCEL CHART THAT THIS PACKAGE USES:
+https://docs.google.com/spreadsheets/d/1C3n3VkCmDMWb8zgZ9EWSfoYNiRP0ziRI/edit?usp=sharing&ouid=105286369374985387783&rtpof=true&sd=true
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+
