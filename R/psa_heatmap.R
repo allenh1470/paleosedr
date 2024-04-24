@@ -14,7 +14,7 @@ psa_heatmap <- function(melted_df) {
     geom_contour_filled() +
     labs(title = "Eklutna PSA Distribution",
          x = "Age (cal yr BP)",
-         y = "Particle Size (µm)",
+         y = "Particle Size (\u03BCm)",
          fill = "Abundance") +
     coord_flip() +
     theme_classic() +

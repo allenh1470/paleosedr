@@ -112,7 +112,7 @@ adjust the plot axis, you can substitute your plot name and depths with
 the following code. Feel free to change the color of the geom_line to
 whatever you like.
 
-![](images/sed%20rate%20and%20MAR.png)
+![](images/sed_rate_and_MAR.png)
 
 Your final plots should look very similar since Sed. Rate and MAR often
 correlate with one another.

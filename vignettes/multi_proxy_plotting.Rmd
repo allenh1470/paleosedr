@@ -40,7 +40,7 @@ Now that we have an age model and proxy records, we will plot some of the record
 First, recall the LipD file and run your age model (visit section 3. Age Modeling). Then, we must map our Bayesian age model onto our paleo data from the lips file. Again, I would recommend visiting this site for more information (<https://nickmckay.github.io/GeoChronR/articles/Introduction.html>).
 
 Above is the code for mapping each paleotable from the Eklutna dataset. If you are referencing a different dataset or paleo table from your lips file, you will need to adjust the paleo.meas.table.num = \# section of the code. I recommend having the browser open with your LipD Playground page so you can correctly name each paleotable.
-```{r, cache = TRUE}
+```{r, message=FALSE}
 Eklutna <- lipdR::readLipd(system.file("extdata","eklutna.allen.2024.lpd", package = "paleosedr", mustWork = TRUE))
 eklutna_age <- runBacon(Eklutna,
               lab.id.var = 'labID',

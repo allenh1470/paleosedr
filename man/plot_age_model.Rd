@@ -10,8 +10,6 @@ plot_age_model(age_model)
 }
 \arguments{
 \item{age_model}{An object obtained from age modeling.}
-
-\item{eklutna_age}{The age model data frame.}
 }
 \value{
 A ggplot object representing the age model plot.
@@ -19,7 +17,7 @@ A ggplot object representing the age model plot.
 A ggplot object representing the age model plot.
 }
 \description{
-This function generates a plot using the age model data.
+This function generates a plot of age model using plotChronEns from geoChronR.
 
 This function generates a plot of age model using plotChronEns from geoChronR.
 }

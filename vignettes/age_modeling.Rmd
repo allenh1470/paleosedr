@@ -66,7 +66,7 @@ Eklutna, we needed to change the sedimentation rate at different core
 parts using slump, boundary, and bacon.acc.mean. Every lake and every
 record is unique, so you can set it up however you like.
 
-```{r, cache = TRUE}
+```{r,message=FALSE}
 eklutna_age <- runBacon(Eklutna,
               lab.id.var = 'labID',
               age.14c.var = 'age', 
@@ -92,7 +92,7 @@ eklutna_age <- runBacon(Eklutna,
 Great! You now have a Bayesian age model for Eklutna! Now, lets
 visualize the data using the plot_age_model function.
 
-```{r}
+```{r, message=FALSE}
 eklutna_age_model <- plot_age_model(eklutna_age)
 eklutna_age_model
 ```
