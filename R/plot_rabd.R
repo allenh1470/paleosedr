@@ -18,7 +18,7 @@ plot_rabd_ens <- function(map_rabd) {
     coord_flip() +
     scale_x_reverse() +
     theme_classic() +
-    labs(x = "Age (Cal bp)", y = "RABD660-670")
+    labs(x = "Age (cal yr BP)", y = "RABD660-670")
 
   print(rabd_plot)
 

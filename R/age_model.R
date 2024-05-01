@@ -12,7 +12,7 @@ plot_age_model <- function(age_model) {
   plot <- geoChronR::plotChronEns(age_model) +
     scale_x_reverse() +
     theme(panel.grid = element_blank(), legend.position = "none") +
-    labs(x = "Age (Cal BP)", y = "Depth (cm)") +
+    labs(x = "Age (cal yr BP)", y = "Depth (cm)") +
     ggtitle(NULL)
 
   return(plot)

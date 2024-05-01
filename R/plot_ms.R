@@ -18,7 +18,7 @@ plot_ms_ens <- function(map_ms) {
     coord_flip() +
     scale_x_reverse() +
     theme_classic() +
-    labs(x = "Age (Cal bp)", y = "MS (SI)")
+    labs(x = "Age (cal yr BP)", y = "MS (SI)")
   print(ms_plot)
 
   return(ms_plot)

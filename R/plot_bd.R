@@ -18,7 +18,7 @@ plot_bd_ens <- function(map_bd) {
     coord_flip() +
     scale_x_reverse() +
     theme_classic() +
-    labs(x = "Age (Cal bp)", y = "BD (g/cm^3)")
+    labs(x = "Age (cal yr BP)", y = "BD (g/cm^3)")
   print(bd_plot)
 
   return(bd_plot)

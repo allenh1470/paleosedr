@@ -22,7 +22,7 @@ get_mar_sheet <- function(all_data) {
     coord_flip() +
     scale_x_reverse() +  # No breaks specified
     theme_classic() +
-    labs(x = "Age (Cal bp)", y = "MAR (g/cm^2/yr)")
+    labs(x = "Age (cal yr BP)", y = "MAR (g/cm^2/yr)")
 
   print(mar_plot)
 

@@ -18,7 +18,7 @@ plot_bsi_ens <- function(map_bsi) {
     coord_flip() +
     scale_x_reverse() +
     theme_classic() +
-    labs(x = "Age (Cal bp)", y = "BSi (%)")
+    labs(x = "Age (cal yr BP)", y = "BSi (%)")
 
   print(bsi_plot)
 

@@ -18,7 +18,7 @@ plot_loi_ens <- function(map_loi) {
     coord_flip() +
     scale_x_reverse() +
     theme_classic() +
-    labs(x = "Age (Cal bp)", y = "LOI (%)")
+    labs(x = "Age (cal yr BP)", y = "LOI (%)")
 
   print(loi_plot)
 

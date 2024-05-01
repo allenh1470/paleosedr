@@ -22,7 +22,7 @@ get_sed_rate_sheet <- function(all_data) {
     coord_flip() +
     scale_x_reverse() +
     theme_classic() +
-    labs(x = "Age (Cal ka bp)", y = "Sed. Rate (cm/yr)")
+    labs(x = "Age (cal yr BP)", y = "Sed. Rate (cm/yr)")
 
   print(sed_rate_plot)
 
