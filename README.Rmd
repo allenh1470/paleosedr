@@ -22,13 +22,13 @@ You can install the development version of paleosedr from [GitHub](https://githu
 devtools::install_github("allenh1470/paleosedr")
 ```
 
-# paleosedR Vignette
+# paleosedr Vignette
 
 ### Developed by: Hunter Allen
 
 ### Date last updated: 4/21/2024
 
-paleosedr is a Rstudio package developed for the NAU's Quaternary Geology and Paleoclimatology laboratory. This package primarily aims to take proxy records developed from lake sediment cores and easily organize data, visualize records, and run a Principal Component Analysis (PCA). With this package, beginner to moderate coding experience is required. Many of the functions in this package work in tandem with the geoChronR (https://nickmckay.github.io/GeoChronR/) and lipdR (https://lipd.net) packages developed by Dr. Nick McKay.
+paleosedr is a Rstudio package developed for the NAU's Quaternary Geology and Paleoclimatology laboratory. This package primarily aims to take proxy records developed from lake sediment cores and easily organize data, and visualize records. With this package, beginner to moderate coding experience is required. Many of the functions in this package work in tandem with the geoChronR (https://nickmckay.github.io/GeoChronR/) and lipdR (https://lipd.net) packages developed by Dr. Nick McKay.
 
 In this vignette I will walk you through the basics of getting your data set up and standardized in an Excel (.xlsx) file, transplanting data into the LipD Playground (https://lipd.net/playground), producing an age-depth model, mapping your data and visualizing it. I have laid the document out into a few categories so that you can navigate directly to the needed section.
 
