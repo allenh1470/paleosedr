@@ -1,5 +1,5 @@
 ---
-title: "stamdardized_data"
+title: "standardized_data"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{standardized_data}
